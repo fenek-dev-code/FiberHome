@@ -7,15 +7,10 @@ import (
 
 func NewLogger(level string, format string) *slog.Logger {
 	// Implementation for creating a new logger based on level and format
-	slog.Info("Logger initialized", "level", level, "format", format)
-	var logger *slog.Logger
-	if format == "json" {
-		logger = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: parseLevel(level)}))
-	} else {
-		logger = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: parseLevel(level)}))
-	}
-	slog.SetDefault(logger)
-	return logger
+	handler := pagesFormatter(format)
+	slog.SetDefault(slog.New(handler))
+	slog.SetLogLoggerLevel(parseLevel(level))
+	return slog.Default()
 }
 
 func parseLevel(level string) slog.Level {
@@ -30,5 +25,17 @@ func parseLevel(level string) slog.Level {
 		return slog.LevelError
 	default:
 		return slog.LevelInfo
+	}
+}
+
+func pagesFormatter(format string) slog.Handler {
+	// Implementation for custom page formatter
+	switch format {
+	case "json":
+		return slog.NewJSONHandler(os.Stdout, nil)
+	case "console":
+		return slog.NewTextHandler(os.Stderr, nil)
+	default:
+		return slog.NewTextHandler(os.Stdout, nil)
 	}
 }

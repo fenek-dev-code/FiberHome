@@ -1,0 +1,22 @@
+
+
+{{ define "title" }}
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Home Page</title>
+{{ end }}
+
+{{ define "content" }}
+    <div class="top-tags">
+        <div class="block-tags">
+        {{ range .newsTags }}
+            <div class="tag-item">
+                <h5 class="tag-text">{{ . }}</h5>
+                <img src="/static/images/tag-icon.png" alt="Tag Icon" class="tag-icon">
+            </div>
+        {{ end }}
+        </div>
+    </div>
+{{ end }}
+{{ template "base" . }}
+<!--  -->
+

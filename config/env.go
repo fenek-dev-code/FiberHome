@@ -11,18 +11,36 @@ func LoadEnv(path ...string) {
 	godotenv.Load()
 }
 
+type DataBeseConfig struct {
+	Url string
+}
+
+type LoggerConfig struct {
+	Level  string
+	Format string
+}
+
+type ServerConfig struct {
+	Port int
+}
+
 type ConfigEnv struct {
-	DatabaseURL string
-	Port        int
-	DebugMode   bool
-	ServiceName string
+	*DataBeseConfig
+	*LoggerConfig
+	*ServerConfig
 }
 
 func LoadConfigEnv() *ConfigEnv {
 	return &ConfigEnv{
-		DatabaseURL: getStringEnv("DATABASE_URL", "postgres://localhost:5432/mydb"),
-		Port:        getIntEnv("PORT", 8080),
-		DebugMode:   getBoolEnv("DEBUG_MODE", false),
-		ServiceName: getStringEnv("SERVICE_NAME", "MyService"),
+		DataBeseConfig: &DataBeseConfig{
+			Url: getStringEnv("DATABASE_URL", "postgres://user:password@localhost:5432/dbname"),
+		},
+		LoggerConfig: &LoggerConfig{
+			Level:  getStringEnv("LOGGER_LEVEL", "info"),
+			Format: getStringEnv("LOGGER_FORMAT", "json"),
+		},
+		ServerConfig: &ServerConfig{
+			Port: getIntEnv("SERVER_PORT", 8080),
+		},
 	}
 }

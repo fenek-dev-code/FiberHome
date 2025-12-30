@@ -36,6 +36,6 @@ func pagesFormatter(format string) slog.Handler {
 	case "console":
 		return slog.NewTextHandler(os.Stderr, nil)
 	default:
-		return slog.NewTextHandler(os.Stdout, nil)
+		return slog.NewTextHandler(os.Stderr, nil)
 	}
 }

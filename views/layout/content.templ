@@ -11,6 +11,23 @@ templ ContentLayout() {
             @component.TopTags(component.TopTagsProps{
                 Tags: component.SampleTopTags,
             })
+            <div class="cards__list">
+                @component.PostCard(component.PostCardProps{
+                    Title: "Открытие сезона байдарок",
+                    Description: "Сегодня был открыт сезон путешествия на байдарках, где вы можете поучаствовать в ...",
+                    ImageUrl: "public/sport/05.png",
+                    User: nil,
+                })
+            </div>
+            <div class="posters__block">
+                @component.PosterCard(component.PosterCardProps{
+                    Title: "Как безопасно водить",
+                    Description: "Длинный текст про то, как можно безопасно водить автомобиль.",
+                    ImageUrl: "/public/car/car_png.png",
+                    PostUrl: "google.com",
+                })
+            </div>
+            { children... }
         </div>
     </div>
 }
@@ -18,13 +35,36 @@ templ ContentLayout() {
 templ ContentLayoutCSS() {
     <style>
         .content-layout {
+            position: relative;
+            z-index: 0;
+            background: #FFFFFF;
             max-width: 1512px;
             width: 100%;
-            margin: 0 auto; /* центрируем контейнер внутри окна */
+            margin: 0 auto;
             padding-left: 204px;
             padding-right: 204px;
             box-sizing: border-box;
-            min-height: calc(100vh - 48px - 100px); /* вычитаем высоту хедера и футера */
+            padding-top: var(--header-height); /* отступ для фиксированного хедера */
+            min-height: calc(100vh - var(--header-height) - 100px); /* корректируем вычитание футера */
         }
+        .cards__list {
+            position: absolute;
+            width: 1512px;
+            height: 459px;
+            left: 204px;
+            top: 778px;
+        }
+        .posters__block {
+            position: absolute;
+            width: 360px;
+            height: 452px;
+            left: 204px;
+            top: 266px;
+
+            border-radius: 12px;
+
+
+        }
+  
     </style>
 }

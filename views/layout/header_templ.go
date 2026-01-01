@@ -80,7 +80,7 @@ func HeaderCSS() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\n        .header {\n            display: flex;\n            align-items: center;\n            justify-content: space-between;\n            /* чуть шире, чем top-tags (1512px) */\n            max-width: 1528px;\n            width: 100%;\n            margin: 0 auto;\n            height: 48px;\n            padding-top: 45px;\n            /* оставить отступы слева/справа такими же как у top-tags для выравнивания */\n            padding-left: 204px;\n            padding-right: 204px;\n            box-sizing: border-box;\n        }\n\n        .header-left, .header-right {\n            display: flex;\n            align-items: center;\n            gap: 32px;\n        }\n\n        .header-left { }\n\n        .header-right { }   \n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\n        .header {\n        /* header */\n\n        /* Auto layout */\n            display: flex;\n            flex-direction: row;\n            justify-content: space-between;\n            align-items: flex-start;\n            padding: 0px;\n            gap: 312px;\n\n            position: absolute;\n            width: 1512px;\n            height: 48px;\n            left: 204px;\n            top: 45px;\n\n\n        }\n\n        .header-left, .header-right {\n            display: flex;\n            align-items: center;\n            gap: 32px;\n        }\n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -1,0 +1,107 @@
+package component
+
+type PosterCardProps struct {
+    Title string
+    Description string
+    ImageUrl string
+    PostUrl string
+}
+
+templ PosterCard(props PosterCardProps) {
+    @posterCardCSS()
+        <div style={"background-image: url('" + props.ImageUrl + "')"}>
+            <div class="cotent__text__slide">
+                <h3 class="content__title__slide">{props.Title}</h3>
+                <span class="content__description__slide">{props.Description}</span>
+            </div>
+        </div>
+}
+
+templ posterCardCSS( ) {
+    <style>
+        .cotent__text__slide{
+            position: absolute;
+            left: 2.78%;
+            right: 3.06%;
+            top: 71.9%;
+            bottom: 2.21%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+        }
+        .content__title__slide {
+            /* Title */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px;
+            position: absolute;
+            left: 2.78%;
+            right: 3.06%;
+            top: 71.9%;
+            bottom: 14.6%;
+            width: 307px;
+            height: 29px;
+
+            /* H3 */
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 29px;
+            color: #000000;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+
+        .content__description__slide {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px 16px 16px;
+            gap: 8px;
+            position: absolute;
+            left: 2.78%;
+            right: 3.06%;
+            top: 85.4%;
+            bottom: 2.21%;
+            /* Explanation */
+            width: 307px;
+            height: 40px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.25px;
+            color: rgba(0, 0, 0, 0.75);
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+        //  {
+        //     /* img/car/05 */
+        //     position: absolute;
+        //     width: 360px;
+        //     height: 452px;
+        //     left: 0px;
+        //     top: 0px;
+        //     position: absolute;
+        //     left: 0%;
+        //     right: 0%;
+        //     top: 0%;
+        //     bottom: 0%;
+        //     background-size: cover;
+        // }
+
+    </style>
+}
+
+css backgroundCss(imgUrl string) {
+    background-image: url( {{ templ.URL(imgUrl) }} );
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

@@ -1,7 +1,6 @@
 package views
 
 import "go-fiber/home/views/layout"
-import "go-fiber/home/views/component"
 
 
 templ Main() {
@@ -12,15 +11,6 @@ templ Main() {
     }){
         @layout.Header()
         @layout.ContentLayout(){
-            @component.TopTags(component.TopTagsProps{
-                Tags: []component.Tag{
-                    {Label: "Go", Image: "/public/images/tags/go.png"},
-                    {Label: "JavaScript", Image: "/public/images/tags/javascript.png"},
-                    {Label: "Python", Image: "/public/images/tags/python.png"},
-                    {Label: "Rust", Image: "/public/images/tags/rust.png"},
-                    {Label: "DevOps", Image: "/public/images/tags/devops.png"},
-                },
-            })
         }
     }
     </main>

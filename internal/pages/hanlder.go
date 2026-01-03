@@ -17,7 +17,7 @@ func NewHanlerPage(router fiber.Router) {
 	h := &handlerPage{router: router}
 	h.router.Get("/", h.homePage)
 	h.router.Get("/register", h.registerPage)
-	h.router.Post("/register", h.registerPost)
+	h.router.Post("/api/register", h.registerPost)
 
 }
 

@@ -11,7 +11,7 @@ templ RegisterForm() {
             <h2>Регистрация на сайте</h2>
         </div>
         <form 
-        hx-post="/register" hx-trigger="submit" hx-swap="innerHTML"  hx-target="#form__target"
+        hx-post="/api/register" hx-trigger="submit" hx-swap="innerHTML"  hx-target="#form__target"
         class="form"
         >
             @component.InputForm(component.InputFormProps{

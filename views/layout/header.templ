@@ -18,9 +18,12 @@ templ Header() {
 templ HeaderCSS() {
     <style>
         .header {
-        /* header */
-
-        /* Auto layout */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px; /* совпадает с --header-height */
+            z-index: 9999;
             display: flex;
             flex-direction: row;
             justify-content: space-between;

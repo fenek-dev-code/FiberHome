@@ -1,0 +1,88 @@
+package widgets
+
+import "go-fiber/home/views/component"
+
+
+templ RegisterForm() {
+    @registerFormCSS()
+    <div >
+    <div class="register-form">
+        <div id="form__target">
+            <h2>Регистрация на сайте</h2>
+        </div>
+        <form 
+        hx-post="/register" hx-trigger="submit" hx-swap="innerHTML"  hx-target="#form__target"
+        class="form"
+        >
+            @component.InputForm(component.InputFormProps{
+                Label:       "Имя пользователя:",
+                Type:        "text",
+                Placeholder: "Введите имя пользователя",
+                Name:        "username",
+            })
+
+            @component.InputForm(component.InputFormProps{
+                Label:       "Email:",
+                Type:        "email",
+                Placeholder: "Введите email",
+                Name:        "email",
+            })
+            @component.InputForm(component.InputFormProps{
+                Label:       "Пароль:",
+                Type:        "password",
+                Placeholder: "Введите пароль",
+                Name:        "password",
+            })
+
+            @component.Button(component.ButtonProps{
+                Text: "Зарегистрироваться",
+                Type: "submit",
+            })
+        </form>
+    </div>
+    </div>
+}
+
+templ registerFormCSS() {
+    <style>
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 12.5%;
+        gap: 32px;
+        width: 40%;
+        height: auto;
+        margin: 0 auto;
+    } 
+    .register-form-title h2 {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        color: #3E3232;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }  
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        gap: 24px;
+        width: 100%;
+        height: auto;
+    }
+
+
+
+
+
+
+
+    </style>   
+}

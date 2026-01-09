@@ -1,0 +1,30 @@
+package layout
+
+import "go-fiber/home/views/component"
+
+
+
+templ ContentLayout() {
+    @ContentLayoutCSS()
+    <div class="content-layout">
+        <div class="content">
+            @component.TopTags(component.TopTagsProps{
+                Tags: component.SampleTopTags,
+            })
+        </div>
+    </div>
+}
+
+templ ContentLayoutCSS() {
+    <style>
+        .content-layout {
+            max-width: 1512px;
+            width: 100%;
+            margin: 0 auto; /* центрируем контейнер внутри окна */
+            padding-left: 204px;
+            padding-right: 204px;
+            box-sizing: border-box;
+            min-height: calc(100vh - 48px - 100px); /* вычитаем высоту хедера и футера */
+        }
+    </style>
+}

@@ -1,0 +1,148 @@
+package component
+
+import "fmt"
+
+type Tag struct {
+    Image string
+    Label string
+}
+
+type TopTagsProps struct {
+    Tags []Tag
+}
+
+var SampleTopTags = []Tag{
+    {Image: "", Label: "food"},
+    {Image: "", Label: "animal"},
+    {Image: "", Label: "car"},
+    {Image: "", Label: "sport"},
+    {Image: "", Label: "music"},
+    {Image: "", Label: "technology"},
+    {Image: "", Label: "abstract"},
+}
+
+templ TopTags(props TopTagsProps) {
+    @TopTagsCSS()
+    <div class="top-tags">
+        <div class="top-tags-inner">
+            for _, t := range props.Tags {
+                if t.Image != "" {
+                    <a href={fmt.Sprintf("/tags/%s", t.Label)} class="tag" style={fmt.Sprintf("background-image: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(%s);", t.Image)}>
+                        <span class="tag-label">{ "#" + t.Label }</span>
+                    </a>
+                } else {
+                    <a href={fmt.Sprintf("/tags/%s", t.Label)} class="tag tag--noimage">
+                        <span class="tag-label">{ "#" + t.Label }</span>
+                    </a>
+                }
+            }
+            <a href="/tags/all" class="tags-arrow">
+                <div class="tags-arrow-inner">
+                    <span class="arrow-icon">›</span>
+                </div>
+            </a>
+        </div>
+    </div>
+}
+
+templ TopTagsCSS() {
+    <style>
+        .top-tags {
+            position: absolute;
+            width: 1512px;
+            height: 68px;
+            left: 204px;
+            top: 138px;
+            box-sizing: border-box;
+        }
+
+        .top-tags-inner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1512px;
+            height: 68px;
+            background: #F5F5F5;
+            border-radius: 12px;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .tag {
+            position: relative;
+            width: 170px;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-sizing: border-box;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tag::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(2.5px);
+            background: rgba(0,0,0,0.15);
+        }
+
+        .tag--noimage {
+            background: #E6E6E6;
+        }
+
+        .tag-label {
+            position: relative;
+            z-index: 1;
+            color: #FFFFFF;
+            font-family: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: capitalize;
+            text-align: center;
+            text-shadow: 0 0 2px rgba(0,0,0,0.4);
+            padding: 0 8px;
+        }
+
+        .tags-arrow {
+            margin-left: auto;
+            width: 144px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .tags-arrow-inner {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #F5F5F5;
+            border: 1px solid #E6E6E6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-icon {
+            font-size: 24px;
+            font-weight: 900;
+            color: #3E3232;
+            line-height: 1;
+        }
+
+        @media (max-width: 1200px) {
+            .top-tags { left: 24px; width: calc(100% - 48px); }
+            .top-tags-inner { width: 100%; gap: 12px; padding: 8px; }
+        }
+    </style>
+}

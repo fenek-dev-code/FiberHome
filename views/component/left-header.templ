@@ -1,0 +1,59 @@
+// ...existing code...
+package component
+
+templ LeftHeaderBlock() {
+    @LeftHeaderBlockCSS()
+    <div class="left-header-inner">
+        <h1 class="site-title">
+            <a href="/" aria-label="Главная">Новости</a>
+        </h1>
+        <nav class="main-nav" role="navigation" aria-label="Главное меню">
+            <a href="/categories" class="nav-link">Категории</a>
+            <a href="/contacts" class="nav-link">Контакты</a>
+        </nav>
+    </div>
+}
+
+templ LeftHeaderBlockCSS() {
+    <style>
+        .left-header-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .site-title { margin: 0; }
+        .site-title a {
+            color: #c62828; /* насыщенный красный */
+            font-weight: 700;
+            font-size: 28px;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #111;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 6px 0;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* небольшая адаптация при узких экранах */
+        @media (max-width: 800px) {
+            .left-header-inner { gap: 16px; }
+            .site-title a { font-size: 20px; }
+            .main-nav { gap: 12px; }
+        }
+    </style>
+}

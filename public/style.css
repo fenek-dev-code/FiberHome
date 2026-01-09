@@ -1,0 +1,16 @@
+:root {
+    --text-color-dark: #3E3232;
+    --sub-text-color-dark: #0000;
+    --sub-text-copacity-dark: 0.75;
+}
+
+body {
+    background-color: #2222;
+    font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

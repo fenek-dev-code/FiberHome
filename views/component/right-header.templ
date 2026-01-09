@@ -1,0 +1,44 @@
+package component
+
+
+templ RightHeaderBlock() {
+    @RightHeaderBlockCSS()
+    @SearchHeaderBlock()
+    <div class="right-header-inner">
+        <a href="/login" class="auth-link">Войти</a>
+        <a href="/signup" class="auth-link signup-link">Регистрация</a>
+    </div>
+}
+
+templ RightHeaderBlockCSS() {
+    <style>
+        .right-header-inner {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .auth-link {
+            color: #111;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+
+        .signup-link {
+            border: 1px solid #c62828;
+            border-radius: 4px;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+
+        /* небольшая адаптация при узких экранах */
+        @media (max-width: 800px) {
+            .right-header-inner { gap: 12px; }
+            .auth-link { font-size: 14px; padding: 4px 8px; }
+        }
+    </style>
+}

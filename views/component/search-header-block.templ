@@ -1,0 +1,83 @@
+package component
+
+
+templ SearchHeaderBlock() {
+    @SearchHeaderBlockCSS()
+    <div class="search-header-inner">
+        <input type="text" class="search-input" placeholder="Поиск..."/>
+        <button class="search-button" aria-label="Искать">
+            <img src="/public/icons/serch-icon.svg" alt="Поиск" class="search-icon"/>
+        </button>
+    </div>
+}
+
+templ SearchHeaderBlockCSS() {
+    <style>
+        /* Форма под Figma: авто-лейаут компонента */
+        .search-header-inner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            gap: 18px;
+
+            width: 359px;
+            height: 48px;
+
+            box-sizing: border-box;
+            background-color: #F5F5F5;
+        }
+
+        .search-input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding: 12px 48px 12px 12px; /* место под кнопку справа */
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: transparent;
+            outline: none;
+        }
+
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 32px;
+            width: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #dfdddd;
+            color: #111;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .search-button:hover {
+            background-color: #adadad;
+        }
+
+        .search-icon {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
+        /* адаптация */
+        @media (max-width: 800px) {
+            .search-header-inner { width: 100%; height: 40px; }
+            .search-input { padding-right: 44px; font-size: 14px; }
+            .search-button { height: 28px; width: 28px; font-size: 14px; right: 8px; }
+            .search-icon { width: 16px; height: 16px; }
+        }
+    </style>
+}

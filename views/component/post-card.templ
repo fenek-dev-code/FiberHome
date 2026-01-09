@@ -1,0 +1,187 @@
+package component
+
+
+type UserProps struct {
+    Name string
+    ImageUrl string
+    DatePosted string
+}
+
+type PostCardProps struct {
+    Title string
+    ImageUrl string
+    Description string
+    User *UserProps
+}
+
+templ PostCard(props PostCardProps) {
+    @postCardCSS()
+    <div class="post__card">
+        <img src={props.ImageUrl} calss="post__image">
+        <h3 class="post__title">{props.Title}</h3>
+        <span class="post__explantion">{props.Description}</span>
+
+            if props.User != nil {
+                <div class="post__user">
+                    <div class="post__content_user">
+                        <img class="post__user_image" src={props.User.ImageUrl}>
+                        <div class="post__user_text">
+                            <span class="post__user_name">props.User.Name</span>
+                            <span class="post__user_date">props.User.DatePosted</span>
+                        </div>  
+                    </div>
+                </div>
+            }
+
+    </div>
+}
+
+templ postCardCSS() {
+    <style>
+        .post__card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            position: absolute;
+            width: 360px;
+            height: 389px;
+            left: 0px;
+            top: 0px;
+            background: #FFFFFF;
+            box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.07);
+            border-radius: 12px;
+        }
+        .post__image {
+            width: 340px;
+            height: 190px;
+            border-radius: 12px;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 1;
+        }
+
+        .post__title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px 16px 16px 6px;
+            width: 340px;
+            height: 51px;
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+            width: 328px;
+            height: 19px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #3E3232;
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+
+        .post__explantion {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 16px 16px 6px;
+            gap: 8px;
+            width: 340px;
+            height: 56px;
+            flex: none;
+            order: 2;
+            align-self: stretch;
+            flex-grow: 0;
+            width: 328px;
+            height: 40px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.25px;
+            color: rgba(62, 50, 50, 0.75);
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+
+        .post__user {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 13px 16px;
+            width: 340px;
+            height: 72px;
+            background: #F5F5F5;
+            border-radius: 12px;
+            flex: none;
+            order: 3;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+        .post__content_user {
+            width: 288px;
+            height: 44px;
+            gap: 10px;
+        }
+        .post__user_image{
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+        }
+        .post__user_text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 4px;
+            width: 234px;
+            height: 44px;
+            flex: none;
+            order: 1;
+            flex-grow: 1;
+        }
+
+        .post__user_date {
+            width: 210px;
+            height: 18px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: 0.25px;
+            color: rgba(62, 50, 50, 0.75);
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+        .post__user_name {
+            width: 234px;
+            height: 22px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0.1px;
+            color: #3E3232;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 0;
+        }
+
+
+
+    </style>
+}

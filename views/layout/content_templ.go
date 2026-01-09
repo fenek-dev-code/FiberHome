@@ -45,7 +45,41 @@ func ContentLayout() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"cards__list\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = component.PostCard(component.PostCardProps{
+			Title:       "Открытие сезона байдарок",
+			Description: "Сегодня был открыт сезон путешествия на байдарках, где вы можете поучаствовать в ...",
+			ImageUrl:    "public/sport/05.png",
+			User:        nil,
+		}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><div class=\"posters__block\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = component.PosterCard(component.PosterCardProps{
+			Title:       "Как безопасно водить",
+			Description: "Длинный текст про то, как можно безопасно водить автомобиль.",
+			ImageUrl:    "/public/car/car_png.png",
+			PostUrl:     "google.com",
+		}).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -74,7 +108,7 @@ func ContentLayoutCSS() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<style>\n        .content-layout {\n            max-width: 1512px;\n            width: 100%;\n            margin: 0 auto; /* центрируем контейнер внутри окна */\n            padding-left: 204px;\n            padding-right: 204px;\n            box-sizing: border-box;\n            min-height: calc(100vh - 48px - 100px); /* вычитаем высоту хедера и футера */\n        }\n    </style>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<style>\n        .content-layout {\n            position: relative;\n            z-index: 0;\n            background: #FFFFFF;\n            max-width: 1512px;\n            width: 100%;\n            margin: 0 auto;\n            padding-left: 204px;\n            padding-right: 204px;\n            box-sizing: border-box;\n            padding-top: var(--header-height); /* отступ для фиксированного хедера */\n            min-height: calc(100vh - var(--header-height) - 100px); /* корректируем вычитание футера */\n        }\n        .cards__list {\n            position: absolute;\n            width: 1512px;\n            height: 459px;\n            left: 204px;\n            top: 778px;\n        }\n        .posters__block {\n            position: absolute;\n            width: 360px;\n            height: 452px;\n            left: 204px;\n            top: 266px;\n\n            border-radius: 12px;\n\n\n        }\n  \n    </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

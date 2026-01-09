@@ -18,19 +18,23 @@ templ Header() {
 templ HeaderCSS() {
     <style>
         .header {
+        /* header */
+
+        /* Auto layout */
             display: flex;
-            align-items: center;
+            flex-direction: row;
             justify-content: space-between;
-            /* чуть шире, чем top-tags (1512px) */
-            max-width: 1528px;
-            width: 100%;
-            margin: 0 auto;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 312px;
+
+            position: absolute;
+            width: 1512px;
             height: 48px;
-            padding-top: 45px;
-            /* оставить отступы слева/справа такими же как у top-tags для выравнивания */
-            padding-left: 204px;
-            padding-right: 204px;
-            box-sizing: border-box;
+            left: 204px;
+            top: 45px;
+
+
         }
 
         .header-left, .header-right {
@@ -38,9 +42,5 @@ templ HeaderCSS() {
             align-items: center;
             gap: 32px;
         }
-
-        .header-left { }
-
-        .header-right { }   
     </style>
 }

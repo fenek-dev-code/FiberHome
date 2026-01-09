@@ -4,7 +4,6 @@ import (
 	"go-fiber/home/config"
 	"go-fiber/home/internal/pages"
 	"go-fiber/home/pkg/logger"
-	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/recover"
@@ -13,8 +12,8 @@ import (
 
 func main() {
 	config.LoadEnv()
-	cfg := config.LoadConfigEnv()
-	logger := logger.NewLogger(cfg.LoggerConfig.Level, cfg.LoggerConfig.Format)
+	conf := config.LoadConfigEnv()
+	logger := logger.NewLogger(conf.LoggerConfig.Level, conf.LoggerConfig.Format)
 
 	app := fiber.New()
 	app.Static("/public", "./public")
@@ -23,5 +22,5 @@ func main() {
 
 	pages.NewHanlerPage(app)
 
-	app.Listen(":" + strconv.Itoa(cfg.Port))
+	app.Listen(conf.GetServerAddress())
 }

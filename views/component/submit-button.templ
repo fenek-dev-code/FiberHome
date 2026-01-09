@@ -1,0 +1,72 @@
+package component
+
+type ButtonProps struct {
+    Text string
+    Type string
+}
+
+templ Button(props ButtonProps) {
+    @buttonCSS()
+    <button type="submit" class="submit-button">
+        <span class="span-in-button">Зарегистрироваться</span>
+        <div class="loader"></div>
+    </button>
+}
+
+templ buttonCSS() {
+    <style>
+    /* Button */
+    .submit-button {
+        /* Auto layout */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 20px;
+        gap: 15px;   
+        /* Primary 75 */
+        background: rgba(248, 21, 57, 0.75);
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 18px;
+        text-align: center;
+        color: #FFFFFF;
+        border: 1px solid rgba(248, 21, 57, 0.75);
+    }
+
+    .submit-button:hover {
+        background: rgba(248, 21, 57, 0.9);
+    }
+
+        /* HTML: <div class="loader"></div> */
+        .loader {
+            display: none;
+        height: 27px;
+        aspect-ratio: 5;
+        --c: #000 90deg,#0000 0;
+        background:
+        conic-gradient(from 135deg at top   ,var(--c)),
+        conic-gradient(from -45deg at bottom,var(--c)) 12.5% 100%;
+        background-size: 20% 50%;
+        background-repeat: repeat-x;
+        -webkit-mask: repeating-linear-gradient(90deg,#000 0 15%,#0000 0 50%) 0 0/200%;
+        animation: l6 .8s infinite linear;
+        }
+        @keyframes l6{
+        to {-webkit-mask-position:-100% 0}
+        }
+    
+
+    .htmx-request .loader {
+        display: inline-block;
+    }
+    .htmx-request .span-in-button {
+        display: none;
+    }
+    
+    </style>   
+}

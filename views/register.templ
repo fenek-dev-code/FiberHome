@@ -1,17 +1,17 @@
 package views
 
 import "go-fiber/home/views/layout"
+import "go-fiber/home/views/widgets"
 
 
-templ Main() {
-    <main>
+templ Register() {
     @layout.Layout(layout.LayoutProps{
         Title: "Главная",
         MetaDescription: "Главная страница сайта новостей",
     }){
         @layout.Header()
-        // @layout.ContentLayout(){
-        // }
+        @widgets.RegisterForm(){
+
+        }
     }
-    </main>
 }

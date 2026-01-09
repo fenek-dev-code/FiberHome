@@ -6,6 +6,10 @@ type handlerPage struct {
 	router fiber.Router
 }
 
+var newsTags = []string{
+	"#Еда", "#Спорт", "#Машины", "#Животные", "#Музыка", "#Остальное", "#Технологии",
+}
+
 func NewHanlerPage(router fiber.Router) {
 	h := &handlerPage{router: router}
 	api := h.router.Group("/page")
@@ -14,5 +18,8 @@ func NewHanlerPage(router fiber.Router) {
 }
 
 func (h *handlerPage) homePage(c *fiber.Ctx) error {
-	return c.SendString("Welcome to the Home Page!")
+
+	return c.Render("page", fiber.Map{
+		"newsTags": newsTags,
+	})
 }

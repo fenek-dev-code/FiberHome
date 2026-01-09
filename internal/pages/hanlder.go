@@ -4,7 +4,6 @@ import (
 	"go-fiber/home/pkg/tadapter"
 	"go-fiber/home/views"
 	"go-fiber/home/views/component"
-	"time"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -32,7 +31,6 @@ func (h *handlerPage) registerPage(c *fiber.Ctx) error {
 }
 
 func (h *handlerPage) registerPost(c *fiber.Ctx) error {
-	time.Sleep(2 * time.Second)
 	form := NewRegisterFormModel(c)
 	verrs := form.Validate()
 	if verrs.HasAny() {

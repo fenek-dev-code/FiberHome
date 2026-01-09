@@ -1,3 +1,5 @@
 .env
 /tmp
 *_templ.go
+/postgres
+/redis
